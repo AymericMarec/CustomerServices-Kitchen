@@ -175,3 +175,233 @@ h1 {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     grid-column: 1 / -1;
 }
+
+
+#orders-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-auto-rows: 1fr;
+    gap: 25px;
+    padding: 25px;
+    background: #f0f2f5;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-content: start;
+}
+
+.order-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-left: 6px solid #2C3E50;
+    width: 350px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.order-header {
+    background: #2C3E50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.order-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.order-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.table-number {
+    font-weight: 700;
+    font-size: 1.4em;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.order-type {
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.order-time {
+    font-size: 1.1em;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.order-content {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.order-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.order-item:last-child {
+    margin-bottom: 0;
+}
+
+.dish-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dish-header label {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #2C3E50;
+    margin: 0;
+}
+
+.quantity-badge {
+    background: #2C3E50;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+}
+
+.order-footer {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 0 0 12px 12px;
+}
+
+.validate-section-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    justify-content: center;
+}
+
+.validate-section-btn:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.validate-section-btn .btn-icon {
+    font-size: 1.2em;
+}
+
+.no-orders {
+    text-align: center;
+    padding: 60px;
+    color: #666;
+    font-size: 1.4em;
+    grid-column: 1 / -1;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles spécifiques pour les types de plats */
+.order-card[data-type="entrees"] .order-header::after {
+    background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+.order-card[data-type="plats"] .order-header::after {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.order-card[data-type="desserts"] .order-header::after {
+    background: linear-gradient(90deg, #f1c40f, #f39c12);
+}
+
+/* Animation pour les nouvelles commandes */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.order-card {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Styles pour les grands écrans */
+@media (min-width: 1600px) {
+    #orders-container {
+        grid-template-columns: repeat(auto-fit, 400px);
+    }
+    
+    .order-card {
+        width: 400px;
+    }
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 768px) {
+    #orders-container {
+        grid-template-columns: 350px;
+        padding: 15px;
+    }
+    
+    .order-card {
+        width: 350px;
+    }
+}
