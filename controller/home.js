@@ -3,7 +3,7 @@ let orders = [];
 const socket = new WebSocket('ws://localhost:8765/ws');
 
 socket.onopen = () => {
-  console.log('WebSocket connecté');
+  socket.send(JSON.stringify({ type: 'register', role: 'kitchen' }));
 };
 
 socket.onmessage = (event) => {
