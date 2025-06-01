@@ -1,5 +1,8 @@
 
-function validateOrder(tableNumber, type, time) {
+function validateOrder(tableNumber, type, time,dishes) {
+    SendOrder(tableNumber,type,dishes)
+
+
     const orderIndex = orders.findIndex(o => 
         o.tableNumber === tableNumber && 
         o.type === type && 
@@ -72,7 +75,7 @@ function displayOrders() {
                 `).join('')}
             </div>
             <div class="order-footer">
-                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}')">
+                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}','${order.dishes}')">
                     <span class="btn-text">Valider</span>
                     <span class="btn-icon">✓</span>
                 </button>
