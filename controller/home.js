@@ -39,7 +39,6 @@ const testOrders = [
             }
         ]
     },
-    // Table 2
     {
         tableNumber: 2,
         type: 'entrees',
