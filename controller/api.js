@@ -1,6 +1,5 @@
 function SendOrder(tableNumber,type,dishes){
-    //route de kevin
-    fetch(window.env.API_URL+'/api/', {
+    fetch(window.env.API_URL+'/api/validate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
