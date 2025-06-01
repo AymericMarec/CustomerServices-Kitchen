@@ -1,5 +1,8 @@
 
-function validateOrder(tableNumber, type, time) {
+function validateOrder(tableNumber, type, time,dishes) {
+    SendOrder(tableNumber,type,dishes)
+
+
     const orderIndex = orders.findIndex(o => 
         o.tableNumber === tableNumber && 
         o.type === type && 
@@ -42,19 +45,14 @@ function displayOrders() {
         orderCard.dataset.tableNumber = order.tableNumber;
         orderCard.dataset.time = order.time;
         orderCard.dataset.type = order.type;
-        
-        const typeLabels = {
-            'entrees': 'Entrées',
-            'plats': 'Plats',
-            'desserts': 'Desserts'
-        };
+    
 
         orderCard.innerHTML = `
             <div class="order-header">
                 <div class="order-info">
                     <div class="order-title">
                         <span class="table-number">Table ${order.tableNumber}</span>
-                        <span class="order-type">${typeLabels[order.type]}</span>
+                        <span class="order-type">${order.type}</span>
                     </div>
                     <span class="order-time">${order.time}</span>
                 </div>
@@ -72,7 +70,7 @@ function displayOrders() {
                 `).join('')}
             </div>
             <div class="order-footer">
-                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}')">
+                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}','${order.dishes}')">
                     <span class="btn-text">Valider</span>
                     <span class="btn-icon">✓</span>
                 </button>

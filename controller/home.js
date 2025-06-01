@@ -9,10 +9,8 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
   try {
     const newOrder = JSON.parse(event.data);
-    console.log('Nouveau message reçu:', newOrder);
 
-    orders.push(newOrder);
-
+    orders.push(newOrder[0]);
     displayOrders();
   } catch (e) {
     console.error('Erreur parsing JSON reçu:', e);
