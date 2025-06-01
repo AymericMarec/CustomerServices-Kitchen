@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-
+require('dotenv').config();
 let mainWindow;
 
 app.whenReady().then(() => {
@@ -12,9 +12,11 @@ app.whenReady().then(() => {
             contextIsolation: true, 
             nodeIntegration: false,
             sandbox: false,
+            preload: path.join(__dirname, 'preload.js')
         }
     });
 
+    preload: path.join(__dirname, 'preload.js')
     mainWindow.loadFile('./view/home.html');
 
     app.on('activate', () => {
