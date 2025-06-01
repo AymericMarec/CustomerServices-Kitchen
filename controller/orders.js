@@ -45,19 +45,14 @@ function displayOrders() {
         orderCard.dataset.tableNumber = order.tableNumber;
         orderCard.dataset.time = order.time;
         orderCard.dataset.type = order.type;
-        
-        const typeLabels = {
-            'entrees': 'Entrées',
-            'plats': 'Plats',
-            'desserts': 'Desserts'
-        };
+    
 
         orderCard.innerHTML = `
             <div class="order-header">
                 <div class="order-info">
                     <div class="order-title">
                         <span class="table-number">Table ${order.tableNumber}</span>
-                        <span class="order-type">${typeLabels[order.type]}</span>
+                        <span class="order-type">${order.type}</span>
                     </div>
                     <span class="order-time">${order.time}</span>
                 </div>
