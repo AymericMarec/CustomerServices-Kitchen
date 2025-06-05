@@ -45,7 +45,7 @@ function displayOrders() {
         orderCard.dataset.tableNumber = order.tableNumber;
         orderCard.dataset.time = order.time;
         orderCard.dataset.type = order.type;
-    
+        const dishesStr = JSON.stringify(order.dishes).replace(/"/g, '&quot;');
 
         orderCard.innerHTML = `
             <div class="order-header">
@@ -70,7 +70,7 @@ function displayOrders() {
                 `).join('')}
             </div>
             <div class="order-footer">
-                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}','${order.dishes}')">
+                <button class="validate-section-btn" onclick="validateOrder(${order.tableNumber}, '${order.type}', '${order.time}','${dishesStr}')">
                     <span class="btn-text">Valider</span>
                     <span class="btn-icon">✓</span>
                 </button>

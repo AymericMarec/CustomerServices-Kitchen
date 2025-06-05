@@ -1,5 +1,6 @@
 function SendOrder(tableNumber,type,dishes){
-    fetch(window.env.API_URL+'/api/validate', {
+    console.log(dishes)
+    fetch(window.env.API_URL+'/api/orders/validate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
